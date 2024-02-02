@@ -2,6 +2,8 @@ from sys import argv
 from base64 import b64decode
 from functions_map import fm
 from phplint import php_lint
+import os.path
+from os import makedirs
 
 if len(argv) < 2:
     print("Usage: %s <file.php>" % (argv[0]))
@@ -32,6 +34,10 @@ def find_and_before(s,what):
         return s
     return s[:y]
 
+outdir_path = os.path.join("out", os.path.dirname(file))
+if not os.path.exists(outdir_path):
+    makedirs(outdir_path)
+
 with open(file, "r") as f:
     print(f"Decompiling {file}...")
     text = f.read()
@@ -45,7 +51,8 @@ with open(file, "r") as f:
 
     b64translator = data[base64_translator_offset:][:base64_translator_len]
     code = data[base64_offset:]
-    with open(file+".DECOMPILED.php", "w+") as f:
+
+    with open(os.path.join(outdir_path, os.path.basename(file)), "w+") as f:
         try:
             #add "<?php" because cncrypto use "eval"
             code = "<?php \n" + b64decode(code.translate(str.maketrans(base64_chars, b64translator))).decode()
