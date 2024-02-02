@@ -55,13 +55,35 @@ fm = {
 		"getAreaCode",
 		"getWeatherStationCode",
 		"getWeatherStationName",
-		"getAll"
+		"getAll",
+
+		# includes/idna_convert.class.php
+		"set_parameter",
+		"decode",
+		"encode",
+		"encode_uri",
+		"get_last_error",
+		"_decode",
+		"_encode",
+		"_adapt",
+		"_encode_digit",
+		"_decode_digit",
+		"_error",
+		"_nameprep",
+		"_hangul_decompose",
+		"_hangul_compose",
+		"_get_combining_class",
+		"_apply_cannonical_ordering",
+		"_combine",
+		"_utf8_to_ucs4",
+
 	]},
 
 	"_0e5ea304": "set_language",
 	"_7ad9fffc": "mail_subject_rfc_helper",
 	"_f43c4f66": "html_end",
-	"_5dddbc71": "db_error"
+	"_5dddbc71": "db_error",
+	"_a6067a4e": "config_auth_exists"
 }
 
 #variables map
@@ -71,7 +93,34 @@ vm = {
 		"_COOKIE",
 		"_SERVER",
 		"_POST",
-		"_GET"
+		"_GET",
+
+		# includes/idna_convert.class.php
+		"_punycode_prefix",
+		"_invalid_ucs",
+		"_max_ucs",
+		"_base",
+		"_tmin",
+		"_tmax",
+		"_skew",
+		"_damp",
+		"_initial_bias",
+		"_initial_n",
+		"_sbase",
+		"_lbase",
+		"_vbase",
+		"_tbase",
+		"_lcount",
+		"_vcount",
+		"_tcount",
+		"_ncount",
+		"_scount",
+		"_error",
+		"_mb_string_overload",
+		"_api_encoding",
+		"_allow_overlong",
+		"_strict_mode",
+		"_idn_version",
 	]},
 
 	"$_f26ec1be": "$version_str",
@@ -83,10 +132,14 @@ vm = {
 	"$_bfa4ce15": "$charset",
 	"$_cf2713fd": "$DB_HOST",
 	"$_8d93d649": "$DB_USER",
+
+	# lol, second bug which im found
+	"$_35c246d5": "$DB_SERVER",
 	"$_5a6dd5f6": "$DB_SERVER",
+
 	"$_be3269d8": "$DB_NAME",
 	"$_5dddbc71": "$db_error_description",
 	"$_27c0e1e9": "$db_error_code",
 	"$_24bdb5eb": "$db_error_text",
-	"$_31098462": "$panel_language"
+	"$_31098462": "$panel_language",
 }
