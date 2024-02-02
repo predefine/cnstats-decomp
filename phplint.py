@@ -32,17 +32,11 @@ VALID_LETTERS = 'abcdefghijklmnopqrstuvwxyz' \
                 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' \
                 '1234567890_'
 
-OPERATORS = ['.', '+', '-', '*', '/', '&', '^', '%', '|', '?', ':', '++', '--',
-             '.=', '+=', '-=', '*=', '/=', '&&', '||', '==', '===', '=>', '->',
-             '::', '=', '!=', '<', '>', '<<', '>>', '<=', '>=']
+OPERATORS = ['.', '+', '-', '*', '/', '&', '^', '%', '|', '?', ':', '=', '<' , '>', '++', '--',
+             '.=', '+=', '-=', '*=', '/=', '&&', '||', '==', '=>', '->',
+             '::', '!=', '<<', '>>', '<=', '>=', '===', '!=='][::-1]
 
-KEYWORD_BLOCK_THINGS = ['for', 'while', 'foreach', 'if', 'do', 'switch',
-                        'else if', 'elseif', 'else']
-
-# step_back sort by length...
-OPERATORS.sort(key=lambda a: -len(a))
-KEYWORD_BLOCK_THINGS.sort(key=lambda a: -len(a))
-
+KEYWORD_BLOCK_THINGS = ['if' ,'do', 'for', 'else', 'while', 'elseif', 'switch', 'foreach', 'else if']
 
 # TODO: also class, and function.
 
