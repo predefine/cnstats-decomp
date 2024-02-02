@@ -1,0 +1,11 @@
+--- out/install/_funct.php
++++ out/install/_funct.php
+@@ -284,7 +284,7 @@
+                 $LANG["html direction"] = "ltr";
+             
+             }print"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">\n";
+-            print"<html dir=\"" . $panel_language["html direction"] . "\">\n";
++            print"<html dir=\"" . $LANG["html direction"] . "\">\n";
+             print"<head>\n";
+             print"<title>" . sprintf($LANG["installer"], $name_with_version) . "</title>\n";
+             print"<meta http-equiv=\"Content-Type\" CONTENT=\"text/html; charset=" . $LANG["charset"] . "\" />\n";
