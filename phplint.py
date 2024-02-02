@@ -739,7 +739,7 @@ class PHPParser(Parser):  # pylint: disable=R0904
 
 
 def php_lint(input_text: str, verbose = True) -> str:
-    output_text = ""
+    output_text = input_text
 
     p = PHPParser(warn=verbose)
     try:
