@@ -40,8 +40,8 @@ KEYWORD_BLOCK_THINGS = ['for', 'while', 'foreach', 'if', 'do', 'switch',
                         'else if', 'elseif', 'else']
 
 # step_back sort by length...
-OPERATORS.sort(key=lambda a: len(a))
-KEYWORD_BLOCK_THINGS.sort(key=lambda a: len(a))
+OPERATORS.sort(key=lambda a: -len(a))
+KEYWORD_BLOCK_THINGS.sort(key=lambda a: -len(a))
 
 
 # TODO: also class, and function.
