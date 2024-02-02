@@ -88,4 +88,5 @@ vm = {
 	"$_5dddbc71": "$db_error_description",
 	"$_27c0e1e9": "$db_error_code",
 	"$_24bdb5eb": "$db_error_text",
+	"$_31098462": "$panel_language"
 }
