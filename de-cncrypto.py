@@ -42,28 +42,28 @@ with open(file, "r") as f:
     print(f"Decompiling {file}...")
     text = f.read()
     data = find_and_before(find_and_after(text, "/*"), "*/")
-    skip = len("CNS")+6 # CNSnnnnnn (n = number)
+    header_len = len("CNS")+6 # CNSnnnnnn (n = number)
+    header_offset = 0
 
-    base64_translator_offset = skip
+    base64_translator_offset = header_len
     base64_translator_len = 52
 
     base64_offset = base64_translator_offset + base64_translator_len
 
     b64translator = data[base64_translator_offset:][:base64_translator_len]
     code = data[base64_offset:]
+    header = data[header_offset:][:3]
 
     with open(os.path.join(outdir_path, os.path.basename(file)), "w+") as f:
-        try:
-            #add "<?php" because cncrypto use "eval"
+        if header == "CNS":
             code = "<?php \n" + b64decode(code.translate(str.maketrans(base64_chars, b64translator))).decode()
-        except:
-            code = text
-
+        else:
+       	    code = text
         try:
             print("Linting...")
             code = php_lint(code, verbose=False)
         except Exception:
-                pass
+            pass
 
         print("[WARN] function map is only changing function names while linting :(")
         apply_fm(code, fm)
