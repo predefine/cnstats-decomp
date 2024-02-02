@@ -1,6 +1,6 @@
 from sys import argv
 from base64 import b64decode
-from functions_map import fm
+from functions_map import fm, vm
 from phplint import php_lint
 import os.path
 from os import makedirs
@@ -12,8 +12,9 @@ if len(argv) < 2:
 file = argv[1]
 
 def apply_fm(code, fm):
-    for func in fm:
-        func_readable = fm[func]
+    maps = {**fm, **vm}
+    for func in maps:
+        func_readable = maps[func]
         if func_readable == func:
             continue
         print(f"[function map] {func.__repr__()} -> {func_readable.__repr__()}")
@@ -51,8 +52,8 @@ with open(file, "r") as f:
     base64_offset = base64_translator_offset + base64_translator_len
 
     b64translator = data[base64_translator_offset:][:base64_translator_len]
-    code = data[base64_offset:]
     header = data[header_offset:][:3]
+    code = data[base64_offset:]
 
     with open(os.path.join(outdir_path, os.path.basename(file)), "w+") as f:
         if header == "CNS":
@@ -66,7 +67,7 @@ with open(file, "r") as f:
             pass
 
         print("[WARN] function map is only changing function names while linting :(")
-        apply_fm(code, fm)
+        code = apply_fm(code, fm)
 
         f.write(code)
 print("Done!")
